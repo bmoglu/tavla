@@ -16,7 +16,9 @@ public class girlPatrol : MonoBehaviour
 
     private float tavlanmaSayisi = 0; // 100 Olunca tavlanıp numarasını verecek
 
-    private float tavlanmaHizi = 5f; //Karaktere göre tavlanma kolaylığı değişecek
+    private float tavlanmaHizi = .5f; //Karaktere göre tavlanma kolaylığı değişecek
+
+    private bool talkToPlayer = false;
     
     void Start()
     {
@@ -24,8 +26,25 @@ public class girlPatrol : MonoBehaviour
 
         distance = Math.Abs(transform.position.x - targetPos.x); //Başlangıç pozisyonumuz ile gideceğimiz pozisyon arasındaki farklı alıyoruz.
     }
- 
- 
+
+    private void Update()
+    {
+        if (talkToPlayer)
+        {
+            TALK();
+        }
+        
+        if (tavlanmaSayisi >= 100)
+        {
+            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.zero, Time.deltaTime * 5f);
+
+            if (transform.localScale == Vector3.zero)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         distance = Math.Abs(transform.position.x - targetPos.x); //Başlangıç pozisyonumuz ile gideceğimiz pozisyon arasındaki farklı alıyoruz.
@@ -51,25 +70,21 @@ public class girlPatrol : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
+            talkToPlayer = true;
             speed = 0;
-            tavlanmaSayisi += tavlanmaHizi;
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void TALK()
     {
-        if (other.transform.CompareTag("Player"))
+        if (tavlanmaSayisi <= 100)
         {
-            if (tavlanmaSayisi <= 100)
-            {
-                tavlanmaSayisi += tavlanmaHizi;
-                SetSizeBar(tavlanmaSayisi / 100);
-            }
-            else
-            {
-                //Tavlandı
-            }
-
+            tavlanmaSayisi += tavlanmaHizi;
+            SetSizeBar(tavlanmaSayisi / 100);
+        }
+        else
+        {
+            //Tavlandı
         }
     }
 
@@ -77,6 +92,7 @@ public class girlPatrol : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
+            talkToPlayer = false;
             speed = 1;
         }
     }
