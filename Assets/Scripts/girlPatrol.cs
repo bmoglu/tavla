@@ -12,6 +12,12 @@ public class girlPatrol : MonoBehaviour
     
     public float speed = 1f;
 
+    public Transform bar;
+
+    private float tavlanmaSayisi = 0; // 100 Olunca tavlanıp numarasını verecek
+
+    private float tavlanmaHizi = 5f; //Karaktere göre tavlanma kolaylığı değişecek
+    
     void Start()
     {
         targetPos = new Vector2( Random.Range(-8, 9), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
@@ -46,6 +52,24 @@ public class girlPatrol : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             speed = 0;
+            tavlanmaSayisi += tavlanmaHizi;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.transform.CompareTag("Player"))
+        {
+            if (tavlanmaSayisi <= 100)
+            {
+                tavlanmaSayisi += tavlanmaHizi;
+                SetSizeBar(tavlanmaSayisi / 100);
+            }
+            else
+            {
+                //Tavlandı
+            }
+
         }
     }
 
@@ -55,5 +79,10 @@ public class girlPatrol : MonoBehaviour
         {
             speed = 1;
         }
+    }
+
+    public void SetSizeBar(float sizeNormalized)
+    {
+        bar.localScale = new Vector3(sizeNormalized, 1f);
     }
 }
