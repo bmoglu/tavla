@@ -17,20 +17,19 @@ public class Vision : MonoBehaviour
         VisionLook();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && PlayerController.isTalking )
         {
             Heart.SetActive(false);
             BreakHeart.SetActive(true);
         }
-       
         
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || !PlayerController.isTalking)
         {
             Heart.SetActive(true);
             BreakHeart.SetActive(false);
