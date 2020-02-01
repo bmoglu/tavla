@@ -27,37 +27,43 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         GirlsCountText.text = GirlsCount.ToString();
-        BuketOpen();
 
-        #region Controller
+        if (UIController.isGameStart && !UIController.isGamePasue)
+        {
+            _animator.enabled = true;
 
-        #if UNITY_EDITOR
-        float horizontalInput = Input.GetAxis("Horizontal");
-        
-        if (horizontalInput == 0)
-        {
-            _animator.SetBool("isMoving", false);
-        }
-        else
-        {
-            Flip(Math.Sign(horizontalInput));
-            
-            _animator.SetBool("isMoving", true);
-        }
-        
-        if (horizontalInput < 0 && transform.position.x < -22)
-        {
-            horizontalInput = 0;
-        } else if (horizontalInput > 0 && transform.position.x > 22)
-        {
-            horizontalInput = 0;
-        }
+            BuketOpen();
 
-        Vector2 moveInput = new Vector2(horizontalInput,0);
+            #region Controller
 
-        moveVelocity = moveInput * speed * Time.deltaTime;
+#if UNITY_EDITOR
+            float horizontalInput = Input.GetAxis("Horizontal");
+
+            if (horizontalInput == 0)
+            {
+                _animator.SetBool("isMoving", false);
+            }
+            else
+            {
+                Flip(Math.Sign(horizontalInput));
+
+                _animator.SetBool("isMoving", true);
+            }
+
+            if (horizontalInput < 0 && transform.position.x < -22)
+            {
+                horizontalInput = 0;
+            }
+            else if (horizontalInput > 0 && transform.position.x > 22)
+            {
+                horizontalInput = 0;
+            }
+
+            Vector2 moveInput = new Vector2(horizontalInput, 0);
+
+            moveVelocity = moveInput * speed * Time.deltaTime;
 #endif
-       
+
 #if UNITY_ANDROID
 
         if (Input.touchCount > 0)
@@ -124,16 +130,26 @@ public class PlayerController : MonoBehaviour
              }
             
              }
-#endif 
+#endif
 
-        #endregion
-        
+            #endregion
+
+        }
+        else
+        {
+            _animator.enabled = false;
+        }
+
     }
 
     private void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position+moveVelocity);
-        
+        if (UIController.isGameStart && !UIController.isGamePasue)
+        {
+            
+            _rb.MovePosition(_rb.position + moveVelocity);
+        }
+
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -156,10 +172,8 @@ public class PlayerController : MonoBehaviour
         {
             isTalking = false;
         }
-        
     }
-
-
+    
     private void BuketOpen()
     {
         if (PowerUp.isTaked)
@@ -174,5 +188,10 @@ public class PlayerController : MonoBehaviour
     {
         buket.SetActive(false);
         PowerUp.isTaked = false;
+    }
+
+    private void GameOver()
+    {
+        
     }
 }

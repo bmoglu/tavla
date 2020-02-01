@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class GirlFriendPatrol : MonoBehaviour
 {
-     private Vector2 targetPos;
+    private Vector2 targetPos;
 
     private float distance;
     
@@ -31,37 +31,50 @@ public class GirlFriendPatrol : MonoBehaviour
 
     private void Update()
     {
-
-        if (speed == 1)
+        if (UIController.isGameStart && !UIController.isGamePasue)
         {
-            _animator.SetBool("isMoving", true);
+            _animator.enabled = true;
+            
+            if (speed == 1)
+            {
+                _animator.SetBool("isMoving", true);
+            }
+            else
+            {
+                _animator.SetBool("isMoving", false);
+            }
         }
         else
         {
-            _animator.SetBool("isMoving", false);
+            _animator.enabled = false;
         }
     }
 
     void FixedUpdate()
     {
-        distance = Math.Abs(transform.position.x - targetPos.x); //Başlangıç pozisyonumuz ile gideceğimiz pozisyon arasındaki farklı alıyoruz.
-
-        if (distance > 0.1f)
+        if (UIController.isGameStart && !UIController.isGamePasue)
         {
-            if (transform.position.x < targetPos.x)
+            distance = Math.Abs(transform.position.x - targetPos.x); //Başlangıç pozisyonumuz ile gideceğimiz pozisyon arasındaki farklı alıyoruz.
+
+        
+            if (distance > 0.1f)
             {
-                Flip(transform, 1);
+                if (transform.position.x < targetPos.x)
+                {
+                    Flip(transform, 1);
+                }
+                else
+                {
+                    Flip(transform, -1);
+                }
+
+                transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
             }
             else
             {
-                Flip(transform,-1);
+                targetPos = new Vector2(Random.Range(player.transform.position.x + 3, player.transform.position.x - 3),
+                    transform.position.y); //Patroll edilecek noktayı seçiyoruz.
             }
-            
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-        }
-        else
-        {
-            targetPos = new Vector2( Random.Range(player.transform.position.x + 3, player.transform.position.x - 3), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
         }
 
     }
