@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
                          moveMobileInput = new Vector2(1,0);
                      }
 
-                     moveVelocity = moveMobileInput * speed * Time.deltaTime;
+                     moveVelocity = moveMobileInput * (speed * 2) * Time.deltaTime;
             
                      Flip(Math.Sign(1));
                         
@@ -117,14 +117,14 @@ public class PlayerController : MonoBehaviour
                          moveMobileInput = new Vector2(-1,0);
                      }
             
-                     moveVelocity = moveMobileInput * speed * Time.deltaTime;
+                     moveVelocity = moveMobileInput * (speed * 2) * Time.deltaTime;
                  }
              }
              else
              {
                  Vector2 moveMobileInput = new Vector2(0,0);
             
-                 moveVelocity = moveMobileInput * speed * Time.deltaTime;
+                 moveVelocity = moveMobileInput * (speed * 2) * Time.deltaTime;
                  
                  _animator.SetBool("isMoving", false);
              }
