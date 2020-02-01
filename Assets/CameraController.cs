@@ -11,7 +11,12 @@ public class CameraController : MonoBehaviour
     public Vector3 offset;
     Vector3 targetPos;
     // Use this for initialization
+
+    private Vector2 maxXpos ;
+    
     void Start () {
+        maxXpos = new Vector2(-14f, 14f);
+        
         targetPos = transform.position;
     }
      
@@ -19,6 +24,14 @@ public class CameraController : MonoBehaviour
     void FixedUpdate () {
         if (target)
         {
+            if (transform.position.x < maxXpos.x)
+            {
+                transform.position = new Vector3(-14f, transform.position.y,-10f);
+            } else if (transform.position.x > maxXpos.y)
+            {
+                 transform.position = new Vector3(14f, transform.position.y, -10f);
+            }
+            
             Vector3 posNoZ = transform.position;
             posNoZ.z = target.transform.position.z;
   

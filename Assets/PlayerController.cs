@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public Text GirlsCountText;
     private Rigidbody2D _rb;
-    private Vector2 moveVelocity;
+    public Vector2 moveVelocity;
     public static bool isTalking = false;
 
     public static int GirlsCount = 0;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GirlsCountText.text = GirlsCount.ToString();
+//        GirlsCountText.text = GirlsCount.ToString();
 
 #if UNITY_EDITOR
         float horizontalInput = Input.GetAxis("Horizontal");
