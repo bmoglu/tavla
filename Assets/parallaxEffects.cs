@@ -20,11 +20,11 @@ public class parallaxEffects : MonoBehaviour
     {
         if (Math.Sign(player.GetComponent<PlayerController>().moveVelocity.x) < 0)
         {
-            Move(-speed / 10);
+            Move(-speed / 8);
         }
         else if (Math.Sign(player.GetComponent<PlayerController>().moveVelocity.x) > 0)
         {
-            Move(speed / 10);
+            Move(speed / 8);
         }
     }
 
