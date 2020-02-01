@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private bool isTouch = false;
 
+    public GameObject buket;
     public Text GirlsCountText;
     private Rigidbody2D _rb;
     public Vector2 moveVelocity;
@@ -26,8 +27,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         GirlsCountText.text = GirlsCount.ToString();
+        BuketOpen();
 
-#if UNITY_EDITOR
+        #region Controller
+
+        #if UNITY_EDITOR
         float horizontalInput = Input.GetAxis("Horizontal");
         
         if (horizontalInput == 0)
@@ -121,6 +125,8 @@ public class PlayerController : MonoBehaviour
             
              }
 #endif 
+
+        #endregion
         
     }
 
@@ -148,8 +154,24 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Girl"))
         {
-            isTalking = false;   
+            isTalking = false;
         }
         
+    }
+
+
+    private void BuketOpen()
+    {
+        if (PowerUp.isTaked)
+        {
+            buket.SetActive(true);
+            Invoke(nameof(BuketClose),5);
+        }
+    }
+
+    private void BuketClose()
+    {
+        buket.SetActive(false);
+        PowerUp.isTaked = false;
     }
 }

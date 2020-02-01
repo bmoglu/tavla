@@ -129,7 +129,16 @@ public class girlPatrol : MonoBehaviour
     {
         if (tavlanmaSayisi <= 100)
         {
-            tavlanmaSayisi += tavlanmaHizi;
+            if (PowerUp.isTaked) // power up alındı
+            {
+                tavlanmaSayisi += tavlanmaHizi*5;
+                
+            }
+            else
+            {
+                tavlanmaSayisi += tavlanmaHizi;
+            }
+            
             SetSizeBar(tavlanmaSayisi / 100);
         }
         else
@@ -154,10 +163,4 @@ public class girlPatrol : MonoBehaviour
     {
         bar.localScale = new Vector3(sizeNormalized, 1f);
     }
-
-    private void GirlGoOut()
-    {
-        
-    }
-    
 }
