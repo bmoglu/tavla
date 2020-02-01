@@ -31,51 +31,57 @@ public class Vision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isTalking)
+        if (UIController.isGameStart && !UIController.isGamePasue)
         {
-            if (PowerUp.isTaked)
-            {
-                tavlanmaHizi = 2.5f;
-            }
-            else
-            {
-                tavlanmaHizi = 0.5f;
-            }
-            
-            GetComponentInParent<GirlFriendPatrol>().player.GetComponent<Animator>().SetBool("isTalking", true);
-            gfPatrolScript.speed = 0;
-            
-                        if (PlayerController.isTalking && !BreakHeart.activeSelf)
-                        {
-                            tavlanmaSayisi = 0;
-            
-                            gfPatrolScript.bar.parent.gameObject.SetActive(true);
-                        
-                            Heart.SetActive(false);
-                            BreakHeart.SetActive(true);
-                        } else
-                        {
-                            if (tavlanmaSayisi <= 100)
-                            {
-                                tavlanmaSayisi += tavlanmaHizi;
-                                SetSizeBar(tavlanmaSayisi / 100);
-                            }
-                            else
-                            {
-                               
-                            }
-                        }
-        }
-        
 
-        if (tavlanmaSayisi >= 100)
-        {
-            tavlanmaSayisi = 0;
-            gfPatrolScript.bar.parent.gameObject.SetActive(false);
-            gfPatrolScript.speed = 1;
-            Heart.SetActive(true);
-            BreakHeart.SetActive(false);
-            pc.BuketClose();
+
+            if (isTalking)
+            {
+                if (PowerUp.isTaked)
+                {
+                    tavlanmaHizi = 2.5f;
+                }
+                else
+                {
+                    tavlanmaHizi = 0.5f;
+                }
+
+                GetComponentInParent<GirlFriendPatrol>().player.GetComponent<Animator>().SetBool("isTalking", true);
+                gfPatrolScript.speed = 0;
+
+                if (PlayerController.isTalking && !BreakHeart.activeSelf)
+                {
+                    tavlanmaSayisi = 0;
+
+                    gfPatrolScript.bar.parent.gameObject.SetActive(true);
+
+                    Heart.SetActive(false);
+                    BreakHeart.SetActive(true);
+                }
+                else
+                {
+                    if (tavlanmaSayisi <= 100)
+                    {
+                        tavlanmaSayisi += tavlanmaHizi;
+                        SetSizeBar(tavlanmaSayisi / 100);
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+
+
+            if (tavlanmaSayisi >= 100)
+            {
+                tavlanmaSayisi = 0;
+                gfPatrolScript.bar.parent.gameObject.SetActive(false);
+                gfPatrolScript.speed = 1;
+                Heart.SetActive(true);
+                BreakHeart.SetActive(false);
+                pc.BuketClose();
+            }
         }
     }
 

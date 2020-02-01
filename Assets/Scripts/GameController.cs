@@ -30,15 +30,18 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lvlTimeSecond -= Time.deltaTime;
-        timeText.text = "00:" + (int)lvlTimeSecond;
-
-        if (lvlTimeSecond < 1)
+        if (UIController.isGameStart && !UIController.isGamePasue)
         {
-            SceneManager.LoadScene(1);
-        }
+            lvlTimeSecond -= Time.deltaTime;
+            timeText.text = "00:" + (int) lvlTimeSecond;
 
-        createPowerUp();
+            if (lvlTimeSecond < 1)
+            {
+                //
+            }
+
+            createPowerUp();
+        }
     }
     
     private void createPowerUp()

@@ -28,9 +28,11 @@ public class girlPatrol : MonoBehaviour
     public GameObject player;
 
     private PlayerController pc;
+    private Animator _anim;
     
     private void Awake()
     {
+        _anim = gameObject.GetComponent<Animator>();
        pc=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
@@ -43,79 +45,91 @@ public class girlPatrol : MonoBehaviour
 
     private void Update()
     {
-        if (girlFriendGonulAlinmaBari.activeSelf) //EĞER KIZ ARKADAŞIN KALBİ KIRIKSA TAVLANAMAZ
+        if (UIController.isGameStart && !UIController.isGamePasue)
         {
-            talkToPlayer = false;
-            speed = 1;
-            tavlanmaSayisi = 0;
-            SetSizeBar(0);
-        }
-        
-        if (talkToPlayer)
-        {
-            TALK();
-        }
-        
-        if (tavlanmaSayisi >= 100 && !isGirlGoOut)
-        {
-            var rnd=Random.Range(0,3); 
-            tavlanmaBar.SetActive(false);
-            contact[rnd].SetActive(true);
-            PlayerController.isTalking = false;
-            isGirlGoOut = true;
-            gameObject.GetComponent<Collider2D>().enabled = false;
-            PlayerController.GirlsCount++;
-            
-            pc.BuketClose();
+            _anim.enabled = true;
+            if (girlFriendGonulAlinmaBari.activeSelf) //EĞER KIZ ARKADAŞIN KALBİ KIRIKSA TAVLANAMAZ
+            {
+                talkToPlayer = false;
+                speed = 1;
+                tavlanmaSayisi = 0;
+                SetSizeBar(0);
+            }
 
-            
-            
+            if (talkToPlayer)
+            {
+                TALK();
+            }
+
+            if (tavlanmaSayisi >= 100 && !isGirlGoOut)
+            {
+                var rnd = Random.Range(0, 3);
+                tavlanmaBar.SetActive(false);
+                contact[rnd].SetActive(true);
+                PlayerController.isTalking = false;
+                isGirlGoOut = true;
+                gameObject.GetComponent<Collider2D>().enabled = false;
+                PlayerController.GirlsCount++;
+
+                pc.BuketClose();
+                
+            }
+        }
+        else
+        {
+            _anim.enabled = false;
         }
     }
 
     void FixedUpdate()
     {
-        distance = Math.Abs(transform.position.x - targetPos.x); //Başlangıç pozisyonumuz ile gideceğimiz pozisyon arasındaki farklı alıyoruz.
-
-       
-            
-        if (distance > 0.1f)
+        if (UIController.isGameStart && !UIController.isGamePasue)
         {
-            if (transform.position.x < targetPos.x)
-            {
-                Flip(transform,1);
-            }
-            else
-            {
-                Flip(transform,-1);
-            }
+            distance = Math.Abs(transform.position.x -
+                                targetPos
+                                    .x); //Başlangıç pozisyonumuz ile gideceğimiz pozisyon arasındaki farklı alıyoruz.
 
-            if(!isGirlGoOut)
-                transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-            else
+
+
+            if (distance > 0.1f)
             {
-                if (0 < transform.position.x)
+                if (transform.position.x < targetPos.x)
                 {
-                    targetPos = new Vector2(100, transform.position.y);
+                    Flip(transform, 1);
                 }
                 else
                 {
-                    targetPos = new Vector2(-100, transform.position.y);
+                    Flip(transform, -1);
                 }
-                transform.position = Vector2.MoveTowards(transform.position,targetPos , 2.5f*speed * Time.deltaTime);
+
+                if (!isGirlGoOut)
+                    transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+                else
+                {
+                    if (0 < transform.position.x)
+                    {
+                        targetPos = new Vector2(100, transform.position.y);
+                    }
+                    else
+                    {
+                        targetPos = new Vector2(-100, transform.position.y);
+                    }
+
+                    transform.position =
+                        Vector2.MoveTowards(transform.position, targetPos, 2.5f * speed * Time.deltaTime);
+                }
+
             }
-                
-        }    
-        else
-        {
-            if (!isGirlGoOut)
+            else
             {
-                targetPos = new Vector2(Random.Range(-22, 23),
-                    transform.position.y); //Patroll edilecek noktayı seçiyoruz.
+                if (!isGirlGoOut)
+                {
+                    targetPos = new Vector2(Random.Range(-22, 23),
+                        transform.position.y); //Patroll edilecek noktayı seçiyoruz.
+                }
+
             }
-            
         }
-        
 
     }
  
