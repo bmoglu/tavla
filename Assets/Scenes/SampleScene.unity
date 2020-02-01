@@ -433,7 +433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8852215, y: 0.8763869}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -31.818, y: -18.942}
+  m_AnchoredPosition: {x: -31.81836, y: -18.942017}
   m_SizeDelta: {x: 1.1499939, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &393045560
@@ -617,6 +617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d004169c3c9d996418292b7c4bc9132d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUps:
+  - {fileID: 4002868616401561649, guid: e1a7006649c42cd4b80aa806543d9035, type: 3}
   lvlTimeSecond: 40
   timeText: {fileID: 393045560}
 --- !u!20 &519420031
@@ -1217,11 +1219,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: c786e4ad355328840a567901f5609bff,
         type: 3}
-    - target: {fileID: 1155521696464693426, guid: 2103c16dd0ef5f9409d6a53fcd0d4f2d,
-        type: 3}
-      propertyPath: GirlsCountText
-      value: 
-      objectReference: {fileID: 986075708}
     - target: {fileID: 1155521696464693427, guid: 2103c16dd0ef5f9409d6a53fcd0d4f2d,
         type: 3}
       propertyPath: m_Offset.x
@@ -1242,6 +1239,11 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 2.4699817
       objectReference: {fileID: 0}
+    - target: {fileID: 1155521696464693426, guid: 2103c16dd0ef5f9409d6a53fcd0d4f2d,
+        type: 3}
+      propertyPath: GirlsCountText
+      value: 
+      objectReference: {fileID: 986075708}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2103c16dd0ef5f9409d6a53fcd0d4f2d, type: 3}
 --- !u!1 &884161888
@@ -1537,7 +1539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.93166673}
   m_AnchorMax: {x: 0.053677853, y: 1}
-  m_AnchoredPosition: {x: -0.039978027, y: -0.019989014}
+  m_AnchoredPosition: {x: -0.0390625, y: -0.019989014}
   m_SizeDelta: {x: -0.08, y: 0.03999996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &986075708
@@ -2417,7 +2419,7 @@ GameObject:
   - component: {fileID: 1527437204}
   m_Layer: 0
   m_Name: bg6
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

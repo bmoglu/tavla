@@ -6,15 +6,23 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    GameObject powerUp;
+    
+    public GameObject[] powerUps;
 
     public float lvlTimeSecond = 20f; //Levelin süresi
     
     public Text timeText;
+    
+    private float powerUpTiming;
+    private float powerUpMaxSecond = 5f;
+    private float powerUpMinSecond = 2f;
 
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        powerUpTiming = Random.Range(powerUpMinSecond, powerUpMaxSecond);
     }
 
     // Update is called once per frame
@@ -27,7 +35,28 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+
+        createPowerUp();
+    }
+    
+    private void createPowerUp()
+    {
+        if (!powerUp)
+        {
+            powerUpTiming -= Time.deltaTime;
         
-        
+            if (powerUpTiming <= 0)
+            {
+                powerUp = Instantiate(powerUps[Random.Range(0, powerUps.Length)], new Vector2(Random.Range(-22, 23), 4f), Quaternion.identity);
+            }
+        }
+
+
+        if (powerUp && powerUp.GetComponent<PowerUp>().isTaked)
+        {
+            powerUp = null;
+            
+            powerUpTiming = Random.Range(powerUpMinSecond, powerUpMaxSecond);
+        }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    
     public float interpVelocity;
     public float minDistance;
     public float followDistance;
@@ -14,7 +15,10 @@ public class CameraController : MonoBehaviour
 
     private Vector2 maxXpos ;
     
-    void Start () {
+    void Start ()
+    {
+
+        
         maxXpos = new Vector2(-14f, 14f);
         
         targetPos = transform.position;
@@ -45,4 +49,6 @@ public class CameraController : MonoBehaviour
   
         }
     }
+
+   
 }

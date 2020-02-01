@@ -117,6 +117,7 @@ public class girlPatrol : MonoBehaviour
         if (other.transform.CompareTag("Player") && !girlFriendGonulAlinmaBari.activeSelf)
         {
             Flip(other.transform,Math.Sign(transform.position.x - other.transform.position.x));
+            Flip(transform, -Math.Sign(transform.position.x - other.transform.position.x));
             
             talkToPlayer = true;
             speed = 0;
@@ -158,4 +159,5 @@ public class girlPatrol : MonoBehaviour
     {
         
     }
+    
 }
