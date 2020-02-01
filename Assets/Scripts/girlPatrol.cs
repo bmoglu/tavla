@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using Random = UnityEngine.Random;
 
 public class girlPatrol : MonoBehaviour
@@ -25,7 +26,14 @@ public class girlPatrol : MonoBehaviour
     private bool talkToPlayer = false;
 
     public GameObject player;
+
+    private PlayerController pc;
     
+    private void Awake()
+    {
+       pc=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+    }
+
     void Start()
     {
         targetPos = new Vector2( Random.Range(-69, 70), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
@@ -57,6 +65,11 @@ public class girlPatrol : MonoBehaviour
             isGirlGoOut = true;
             gameObject.GetComponent<Collider2D>().enabled = false;
             PlayerController.GirlsCount++;
+            
+            pc.BuketClose();
+
+            
+            
         }
     }
 
@@ -143,7 +156,7 @@ public class girlPatrol : MonoBehaviour
         }
         else
         {
-            //Tavlandı
+            
         }
     }
     

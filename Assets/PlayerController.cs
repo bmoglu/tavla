@@ -164,12 +164,13 @@ public class PlayerController : MonoBehaviour
     {
         if (PowerUp.isTaked)
         {
+            CancelInvoke(nameof(BuketClose));
             buket.SetActive(true);
             Invoke(nameof(BuketClose),5);
         }
     }
 
-    private void BuketClose()
+    public void BuketClose()
     {
         buket.SetActive(false);
         PowerUp.isTaked = false;
