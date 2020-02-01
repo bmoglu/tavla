@@ -33,6 +33,7 @@ public class UIController : MonoBehaviour
             isGameOver = false;
             isGameStart = false;
             isGamePasue = false;
+            isGameWin = false;
         }
         else
         {
@@ -40,15 +41,17 @@ public class UIController : MonoBehaviour
 
         }
 
+        LvlWin();
+
     }
 
     public void OnClickStart()
     {
         UIObjects[0].SetActive(false);
         UIObjects[1].SetActive(true);
-
-
+        
         isGameStart = true;
+        isGameWin = false;
     }
 
     public void OnClickLevels()
@@ -91,6 +94,8 @@ public class UIController : MonoBehaviour
         UIObjects[4].SetActive(false);
         UIObjects[0].SetActive(true);
 
+        isGameWin = false;
+        
         int temp = SceneManager.GetActiveScene().buildIndex;
         temp += 1;
         LevelLoader(temp);
@@ -120,5 +125,15 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene(lvlIndex);
     }
 
+    private void LvlWin()
+    {
+        if (isGameWin)
+        {
+            UIObjects[1].SetActive(false);
+            UIObjects[4].SetActive(true);
+
+            isGameStart = false;
+            isGamePasue = false;
+        }
+    }
 }
-    
