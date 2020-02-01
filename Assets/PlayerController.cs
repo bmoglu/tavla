@@ -43,6 +43,14 @@ public class PlayerController : MonoBehaviour
             
             _animator.SetBool("isMoving", true);
         }
+        
+        if (horizontalInput < 0 && transform.position.x < -22)
+        {
+            horizontalInput = 0;
+        } else if (horizontalInput > 0 && transform.position.x > 22)
+        {
+            horizontalInput = 0;
+        }
 
         Vector2 moveInput = new Vector2(horizontalInput,0);
 
