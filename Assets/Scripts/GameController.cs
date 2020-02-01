@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     private GameObject powerUp;
+        public GameObject buket;
     
     public GameObject[] powerUps;
 
@@ -42,7 +43,7 @@ public class GameController : MonoBehaviour
     
     private void createPowerUp()
     {
-        if (!isExist)
+        if (!powerUp)
         {
             powerUpTiming -= Time.deltaTime;
         
@@ -50,18 +51,16 @@ public class GameController : MonoBehaviour
             {
                 powerUp = Instantiate(powerUps[Random.Range(0, powerUps.Length)], new Vector2(Random.Range(-22, 23), 4f), Quaternion.identity);
                 
-                isExist = true;
+               
             }
-            
         }
         
-        if (powerUp && isExist && PowerUp.isTaked)
+        if (powerUp)
         {
             powerUp = null;
             
             powerUpTiming = Random.Range(powerUpMinSecond, powerUpMaxSecond);
 
-            isExist = false;
         }
     }
 }

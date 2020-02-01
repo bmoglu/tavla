@@ -15,6 +15,14 @@ public class Vision : MonoBehaviour
     private GirlFriendPatrol gfPatrolScript;
     
     public GameObject Heart, BreakHeart,GirlFriend;
+
+    private PlayerController pc;
+
+    private void Awake()
+    {
+        pc=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+    }
+
     void Start()
     {
         gfPatrolScript = GetComponentInParent<GirlFriendPatrol>();
@@ -36,6 +44,7 @@ public class Vision : MonoBehaviour
                         
                             Heart.SetActive(false);
                             BreakHeart.SetActive(true);
+                            pc.BuketClose();
                         } else
                         {
                             if (tavlanmaSayisi <= 100)
@@ -50,8 +59,7 @@ public class Vision : MonoBehaviour
                         }
         }
         
-        VisionLook();
-        
+
         if (tavlanmaSayisi >= 100)
         {
             tavlanmaSayisi = 0;
@@ -69,8 +77,7 @@ public class Vision : MonoBehaviour
             Flip(other.transform, Math.Sign(transform.position.x - other.transform.position.x));
 
             isTalking = true;
-
-
+            
         }
         
     }
@@ -85,11 +92,7 @@ public class Vision : MonoBehaviour
 
         }
     }
-
-    private void VisionLook()
-    {
-        
-    }
+    
     
     public void SetSizeBar(float sizeNormalized)
     {
