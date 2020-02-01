@@ -76,21 +76,39 @@ public class PlayerController : MonoBehaviour
              {
                  if (Screen.width / 2 < touch.position.x)
                  {
-                     Vector2 moveMobileInput = new Vector2(1,0);
-            
+                     Vector2 moveMobileInput;
+                     
+                     if ( transform.position.x > 22)
+                     {
+                         moveMobileInput = new Vector2(0,0);  
+                     }
+                     else
+                     {
+                         moveMobileInput = new Vector2(1,0);
+                     }
+
                      moveVelocity = moveMobileInput * speed * Time.deltaTime;
             
                      Flip(Math.Sign(1));
                         
                      _animator.SetBool("isMoving", true);
                  }
-                 else
+                 else if (Screen.width / 2 > touch.position.x)
                  {
                      Flip(Math.Sign(-1));
                         
                      _animator.SetBool("isMoving", true);
             
-                     Vector2 moveMobileInput = new Vector2(-1,0);
+                     Vector2 moveMobileInput;
+                     
+                     if ( transform.position.x < -22)
+                     {
+                         moveMobileInput = new Vector2(0,0);  
+                     }
+                     else
+                     {
+                         moveMobileInput = new Vector2(-1,0);
+                     }
             
                      moveVelocity = moveMobileInput * speed * Time.deltaTime;
                  }

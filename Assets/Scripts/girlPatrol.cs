@@ -79,7 +79,14 @@ public class girlPatrol : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
             else
             {
-                targetPos = new Vector2(-100, transform.position.y);
+                if (0 < transform.position.x)
+                {
+                    targetPos = new Vector2(100, transform.position.y);
+                }
+                else
+                {
+                    targetPos = new Vector2(-100, transform.position.y);
+                }
                 transform.position = Vector2.MoveTowards(transform.position,targetPos , 2.5f*speed * Time.deltaTime);  
             }
                 
