@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
 
     public static int GirlsCount = 0;
     public Animator _animator;
+
+    private int lvl1 = 5;
+    private int lvl2;
+    private int lvl3;
     
     [SerializeField] private float speed=10f;
     void Start()
@@ -27,7 +31,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         GirlsCountText.text = GirlsCount.ToString();
-
+        
         if (UIController.isGameStart && !UIController.isGamePasue)
         {
             _animator.enabled = true;
@@ -140,6 +144,8 @@ public class PlayerController : MonoBehaviour
             _animator.enabled = false;
         }
 
+        GameWin();
+
     }
 
     private void FixedUpdate()
@@ -190,7 +196,7 @@ public class PlayerController : MonoBehaviour
         PowerUp.isTaked = false;
     }
 
-    private void GameOver()
+    private void GameWin()
     {
         
     }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using Random = UnityEngine.Random;
 
@@ -69,9 +70,11 @@ public class girlPatrol : MonoBehaviour
                 contact[rnd].SetActive(true);
                 PlayerController.isTalking = false;
                 isGirlGoOut = true;
+                
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 PlayerController.GirlsCount++;
 
+                
                 pc.BuketClose();
                 
             }
@@ -80,6 +83,8 @@ public class girlPatrol : MonoBehaviour
         {
             _anim.enabled = false;
         }
+
+        lvlWinCheck();
     }
 
     void FixedUpdate()
@@ -201,5 +206,32 @@ public class girlPatrol : MonoBehaviour
     public void SetSizeBar(float sizeNormalized)
     {
         bar.localScale = new Vector3(sizeNormalized, 1f);
+    }
+
+    private void lvlWinCheck()
+    {
+        int temp = SceneManager.GetActiveScene().buildIndex;
+        
+        if (temp == 0)
+        {
+            if (PlayerController.GirlsCount == 5)
+            {
+                UIController.isGameWin = true;
+            }
+        }
+        else if (temp == 1)
+        {
+            if (PlayerController.GirlsCount == 100)
+            {
+                UIController.isGameWin = true;
+            } 
+        }
+        else
+        {
+            if (PlayerController.GirlsCount == 50)
+            {
+                UIController.isGameWin = true;
+            }
+        }
     }
 }
