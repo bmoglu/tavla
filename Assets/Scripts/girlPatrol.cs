@@ -6,8 +6,9 @@ using Random = UnityEngine.Random;
 
 public class girlPatrol : MonoBehaviour
 {
-    public GameObject girlFriendGonulAlinmaBari;
-    
+    public GameObject girlFriendGonulAlinmaBari,tavlanmaBar,phone;
+
+    private bool isGirlGoOut = false;
     private Vector2 targetPos;
 
     private float distance;
@@ -48,12 +49,12 @@ public class girlPatrol : MonoBehaviour
         
         if (tavlanmaSayisi >= 100)
         {
-            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.zero, Time.deltaTime * 5f);
+            
+            tavlanmaBar.SetActive(false);
+            phone.SetActive(true);
+            PlayerController.isTalking = false;
+            isGirlGoOut = true;
 
-            if (transform.localScale == Vector3.zero)
-            {
-                Destroy(gameObject);
-            }
         }
     }
 
@@ -61,6 +62,8 @@ public class girlPatrol : MonoBehaviour
     {
         distance = Math.Abs(transform.position.x - targetPos.x); //Başlangıç pozisyonumuz ile gideceğimiz pozisyon arasındaki farklı alıyoruz.
 
+       
+            
         if (distance > 0.1f)
         {
             if (transform.position.x < targetPos.x)
@@ -71,12 +74,18 @@ public class girlPatrol : MonoBehaviour
             {
                 Flip(-1);
             }
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+
+            if(!isGirlGoOut)
+                transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            else 
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(-100,transform.position.y), speed * Time.deltaTime);  
         }
         else
         {
-            targetPos = new Vector2( Random.Range(-69, 70), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
+            targetPos = new Vector2(Random.Range(-69, 70),
+                transform.position.y); //Patroll edilecek noktayı seçiyoruz.
         }
+        
 
     }
  
@@ -122,5 +131,10 @@ public class girlPatrol : MonoBehaviour
     public void SetSizeBar(float sizeNormalized)
     {
         bar.localScale = new Vector3(sizeNormalized, 1f);
+    }
+
+    private void GirlGoOut()
+    {
+        
     }
 }
