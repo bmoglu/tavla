@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -11,15 +12,32 @@ public class UIController : MonoBehaviour
     public static bool isGameOver = false;
     public static bool isGameWin = false;
 
+    public Text GirlsCountText;
+
     public GameObject[] UIObjects;
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isGameOver)
+        {
+
+            UIObjects[1].SetActive(false);
+            UIObjects[3].SetActive(true);
+            
+            isGameOver = false;
+            isGameStart = false;
+            isGamePasue = false;
+        }
+        else
+        {
+      
+            
+        }
         
     }
 
@@ -27,7 +45,8 @@ public class UIController : MonoBehaviour
     {
         UIObjects[0].SetActive(false);
         UIObjects[1].SetActive(true);
-
+        
+      
         isGameStart = true;
     }
     
@@ -57,24 +76,32 @@ public class UIController : MonoBehaviour
     {
         UIObjects[3].SetActive(false);
         UIObjects[0].SetActive(true);
-        
+      
+        isGamePasue = false;
+        isGameStart = false;
+
         SceneManager.LoadScene(0);
+
     }
 
     public void OnClickNextLevel()
     {
         UIObjects[4].SetActive(false);
         UIObjects[0].SetActive(true);
+        
+   
     }
 
     public void OnClickExit()
     {
         UIObjects[2].SetActive(false);
         UIObjects[0].SetActive(true);
+        
         isGamePasue = false;
         isGameStart = false;
-        
+            
         SceneManager.LoadScene(0);
+        
     }
 
     public void OnClickBack()
@@ -82,4 +109,6 @@ public class UIController : MonoBehaviour
         UIObjects[5].SetActive(false);
         UIObjects[0].SetActive(true);
     }
+    
+    
 }
