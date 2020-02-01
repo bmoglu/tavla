@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public bool isGrounded;
-    public bool isTaked;
+    private bool isGrounded;
+    public  static bool isTaked;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +26,15 @@ public class PowerUp : MonoBehaviour
         if (other.transform.CompareTag("Floor"))
         {
             isGrounded = true;
+            isTaked = false;
         }
         
         if (other.transform.CompareTag("Player"))
         {
             isGrounded = false;
             isTaked = true;
+            Destroy(gameObject);
+            
         }
     }
     

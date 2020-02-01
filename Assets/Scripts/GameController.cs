@@ -6,14 +6,15 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    GameObject powerUp;
+    private GameObject powerUp;
     
     public GameObject[] powerUps;
 
     public float lvlTimeSecond = 20f; //Levelin süresi
     
     public Text timeText;
-    
+
+    private bool isExist = false;
     private float powerUpTiming;
     private float powerUpMaxSecond = 5f;
     private float powerUpMinSecond = 2f;
@@ -41,22 +42,26 @@ public class GameController : MonoBehaviour
     
     private void createPowerUp()
     {
-        if (!powerUp)
+        if (!isExist)
         {
             powerUpTiming -= Time.deltaTime;
         
             if (powerUpTiming <= 0)
             {
                 powerUp = Instantiate(powerUps[Random.Range(0, powerUps.Length)], new Vector2(Random.Range(-22, 23), 4f), Quaternion.identity);
+                
+                isExist = true;
             }
+            
         }
-
-
-        if (powerUp && powerUp.GetComponent<PowerUp>().isTaked)
+        
+        if (powerUp && isExist && PowerUp.isTaked)
         {
             powerUp = null;
             
             powerUpTiming = Random.Range(powerUpMinSecond, powerUpMaxSecond);
+
+            isExist = false;
         }
     }
 }
