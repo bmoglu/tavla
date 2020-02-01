@@ -62,10 +62,11 @@ public class Vision : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            Flip(other.transform, Math.Sign(transform.position.x - other.transform.position.x));
 
             isTalking = true;
 
@@ -93,5 +94,11 @@ public class Vision : MonoBehaviour
     public void SetSizeBar(float sizeNormalized)
     {
         gfPatrolScript.bar.localScale = new Vector3(sizeNormalized, 1f);
+    }
+    
+    void Flip(Transform transform, float direction){
+        Vector3 theScale = transform.localScale;
+        theScale.x = -direction / 2;
+        transform.localScale = theScale;
     }
 }

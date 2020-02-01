@@ -70,11 +70,11 @@ public class girlPatrol : MonoBehaviour
         {
             if (transform.position.x < targetPos.x)
             {
-                Flip(1);
+                Flip(transform,1);
             }
             else
             {
-                Flip(-1);
+                Flip(transform,-1);
             }
 
             if(!isGirlGoOut)
@@ -106,7 +106,7 @@ public class girlPatrol : MonoBehaviour
 
     }
  
-    void Flip(float direction){
+    void Flip(Transform transform, float direction){
         Vector3 theScale = transform.localScale;
         theScale.x = -direction / 2;
         transform.localScale = theScale;
@@ -116,6 +116,8 @@ public class girlPatrol : MonoBehaviour
     {
         if (other.transform.CompareTag("Player") && !girlFriendGonulAlinmaBari.activeSelf)
         {
+            Flip(other.transform,Math.Sign(transform.position.x - other.transform.position.x));
+            
             talkToPlayer = true;
             speed = 0;
             player.GetComponent<Animator>().SetBool("isTalking", true);

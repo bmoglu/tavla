@@ -50,11 +50,11 @@ public class GirlFriendPatrol : MonoBehaviour
         {
             if (transform.position.x < targetPos.x)
             {
-                Flip(1);
+                Flip(transform, 1);
             }
             else
             {
-                Flip(-1);
+                Flip(transform,-1);
             }
             
             transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
@@ -66,7 +66,7 @@ public class GirlFriendPatrol : MonoBehaviour
 
     }
  
-    void Flip(float direction){
+    void Flip(Transform transform, float direction){
         Vector3 theScale = transform.localScale;
         theScale.x = -direction / 2;
         transform.localScale = theScale;
