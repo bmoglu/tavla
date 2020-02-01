@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private bool isTouch = false;
-    
+
+    public Text GirlsCountText;
     private Rigidbody2D _rb;
     private Vector2 moveVelocity;
     public static bool isTalking = false;
 
+    public static int GirlsCount = 0;
     public Animator _animator;
     
     [SerializeField] private float speed=10f;
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GirlsCountText.text = GirlsCount.ToString();
 
 #if UNITY_EDITOR
         float horizontalInput = Input.GetAxis("Horizontal");
