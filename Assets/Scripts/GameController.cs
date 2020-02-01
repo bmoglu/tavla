@@ -1,13 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
 {
     private GameObject powerUp;
-        public GameObject buket;
     
     public GameObject[] powerUps;
 
@@ -20,8 +21,9 @@ public class GameController : MonoBehaviour
     private float powerUpMaxSecond = 10f;
     private float powerUpMinSecond = 5f;
 
-    public GameObject player;
-    
+    public GameObject player; 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +35,15 @@ public class GameController : MonoBehaviour
     {
         if (UIController.isGameStart && !UIController.isGamePasue)
         {
+            
+            
             lvlTimeSecond -= Time.deltaTime;
             timeText.text = "00:" + (int) lvlTimeSecond;
 
             if (lvlTimeSecond < 1)
             {
-                //
+                UIController.isGameOver = true;
+                lvlTimeSecond = 999;
             }
 
             createPowerUp();

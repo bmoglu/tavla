@@ -32,6 +32,7 @@ public class girlPatrol : MonoBehaviour
     
     private void Awake()
     {
+        PlayerController.GirlsCount = 0;
         _anim = gameObject.GetComponent<Animator>();
        pc=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
