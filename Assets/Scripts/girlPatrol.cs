@@ -47,14 +47,14 @@ public class girlPatrol : MonoBehaviour
             TALK();
         }
         
-        if (tavlanmaSayisi >= 100)
+        if (tavlanmaSayisi >= 100 && !isGirlGoOut)
         {
-            
             tavlanmaBar.SetActive(false);
             phone.SetActive(true);
             PlayerController.isTalking = false;
             isGirlGoOut = true;
-
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            PlayerController.GirlsCount++;
         }
     }
 
@@ -77,13 +77,21 @@ public class girlPatrol : MonoBehaviour
 
             if(!isGirlGoOut)
                 transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-            else 
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(-100,transform.position.y), speed * Time.deltaTime);  
-        }
+            else
+            {
+                targetPos = new Vector2(-100, transform.position.y);
+                transform.position = Vector2.MoveTowards(transform.position,targetPos , 2.5f*speed * Time.deltaTime);  
+            }
+                
+        }    
         else
         {
-            targetPos = new Vector2(Random.Range(-69, 70),
-                transform.position.y); //Patroll edilecek noktayı seçiyoruz.
+            if (!isGirlGoOut)
+            {
+                targetPos = new Vector2(Random.Range(-69, 70),
+                    transform.position.y); //Patroll edilecek noktayı seçiyoruz.
+            }
+            
         }
         
 
@@ -117,6 +125,8 @@ public class girlPatrol : MonoBehaviour
             //Tavlandı
         }
     }
+    
+   
 
     private void OnTriggerExit2D(Collider2D other)
     {
