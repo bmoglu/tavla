@@ -15,9 +15,10 @@ public class UIController : MonoBehaviour
     public Text GirlsCountText;
 
     public GameObject[] UIObjects;
+
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -28,34 +29,34 @@ public class UIController : MonoBehaviour
 
             UIObjects[1].SetActive(false);
             UIObjects[3].SetActive(true);
-            
+
             isGameOver = false;
             isGameStart = false;
             isGamePasue = false;
         }
         else
         {
-      
-            
+
+
         }
-        
+
     }
 
     public void OnClickStart()
     {
         UIObjects[0].SetActive(false);
         UIObjects[1].SetActive(true);
-        
-      
+
+
         isGameStart = true;
     }
-    
+
     public void OnClickLevels()
     {
         UIObjects[0].SetActive(false);
         UIObjects[5].SetActive(true);
     }
-    
+
     public void OnClickPause()
     {
         UIObjects[1].SetActive(false);
@@ -63,7 +64,7 @@ public class UIController : MonoBehaviour
 
         isGamePasue = true;
     }
-    
+
     public void OnClickResume()
     {
         UIObjects[2].SetActive(false);
@@ -71,16 +72,17 @@ public class UIController : MonoBehaviour
 
         isGamePasue = false;
     }
-    
+
     public void OnClickTryAgain()
     {
         UIObjects[3].SetActive(false);
         UIObjects[0].SetActive(true);
-      
+
         isGamePasue = false;
         isGameStart = false;
 
-        SceneManager.LoadScene(0);
+        int temp = SceneManager.GetActiveScene().buildIndex;
+        LevelLoader(temp);
 
     }
 
@@ -88,20 +90,23 @@ public class UIController : MonoBehaviour
     {
         UIObjects[4].SetActive(false);
         UIObjects[0].SetActive(true);
-        
-   
+
+        int temp = SceneManager.GetActiveScene().buildIndex;
+        temp += 1;
+        LevelLoader(temp);
     }
 
     public void OnClickExit()
     {
         UIObjects[2].SetActive(false);
         UIObjects[0].SetActive(true);
-        
+
         isGamePasue = false;
         isGameStart = false;
-            
-        SceneManager.LoadScene(0);
-        
+
+        int temp = SceneManager.GetActiveScene().buildIndex;
+        LevelLoader(temp);
+
     }
 
     public void OnClickBack()
@@ -109,6 +114,11 @@ public class UIController : MonoBehaviour
         UIObjects[5].SetActive(false);
         UIObjects[0].SetActive(true);
     }
-    
-    
+
+    public void LevelLoader(int lvlIndex)
+    {
+        SceneManager.LoadScene(lvlIndex);
+    }
+
 }
+    
