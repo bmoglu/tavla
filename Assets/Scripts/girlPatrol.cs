@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class girlPatrol : MonoBehaviour
 {
+    public GameObject girlFriendGonulAlinmaBari;
+    
     private Vector2 targetPos;
 
     private float distance;
@@ -19,16 +21,26 @@ public class girlPatrol : MonoBehaviour
     private float tavlanmaHizi = .5f; //Karaktere göre tavlanma kolaylığı değişecek
 
     private bool talkToPlayer = false;
+
+    public GameObject player;
     
     void Start()
     {
-        targetPos = new Vector2( Random.Range(-8, 9), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
+        targetPos = new Vector2( Random.Range(-26, 26), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
 
         distance = Math.Abs(transform.position.x - targetPos.x); //Başlangıç pozisyonumuz ile gideceğimiz pozisyon arasındaki farklı alıyoruz.
     }
 
     private void Update()
     {
+        if (girlFriendGonulAlinmaBari.activeSelf) //EĞER KIZ ARKADAŞIN KALBİ KIRIKSA TAVLANAMAZ
+        {
+            talkToPlayer = false;
+            speed = 1;
+            tavlanmaSayisi = 0;
+            SetSizeBar(0);
+        }
+        
         if (talkToPlayer)
         {
             TALK();
@@ -51,27 +63,36 @@ public class girlPatrol : MonoBehaviour
 
         if (distance > 0.1f)
         {
+            if (transform.position.x < targetPos.x)
+            {
+                Flip(1);
+            }
+            else
+            {
+                Flip(-1);
+            }
             transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
         }
         else
         {
-            targetPos = new Vector2( Random.Range(-8, 9), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
+            targetPos = new Vector2( Random.Range(-26, 27), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
         }
 
     }
  
-    void Flip(){
+    void Flip(float direction){
         Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
+        theScale.x = -direction / 2;
         transform.localScale = theScale;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.transform.CompareTag("Player"))
+        if (other.transform.CompareTag("Player") && !girlFriendGonulAlinmaBari.activeSelf)
         {
             talkToPlayer = true;
             speed = 0;
+            player.GetComponent<Animator>().SetBool("isTalking", true);
         }
     }
 
@@ -94,6 +115,7 @@ public class girlPatrol : MonoBehaviour
         {
             talkToPlayer = false;
             speed = 1;
+            player.GetComponent<Animator>().SetBool("isTalking", false);
         }
     }
 

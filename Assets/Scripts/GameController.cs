@@ -27,5 +27,7 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+        
+        
     }
 }
