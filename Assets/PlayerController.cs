@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-//        GirlsCountText.text = GirlsCount.ToString();
+        GirlsCountText.text = GirlsCount.ToString();
 
 #if UNITY_EDITOR
         float horizontalInput = Input.GetAxis("Horizontal");
