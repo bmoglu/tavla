@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour
         
             if (powerUpTiming <= 0)
             {
-                powerUp = Instantiate(powerUps[Random.Range(0, powerUps.Length)], new Vector2(Random.Range(-22, 23), 4f), Quaternion.identity);
+                powerUp = Instantiate(powerUps[Random.Range(0, powerUps.Length)], new Vector2(Mathf.Clamp(Random.Range(player.transform.position.x - 5, player.transform.position.x + 5), -22, 22), 4f), Quaternion.identity);
                 PowerUp.isTaked = false;
                 powerUpTiming = Random.Range(powerUpMinSecond, powerUpMaxSecond);
             }
@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
             {
                 powerUpTiming = Random.Range(powerUpMinSecond, powerUpMaxSecond);
                 powerUp = powerUps[Random.Range(0, powerUps.Length)];
-                powerUp.transform.position = new Vector2(Mathf.Clamp(Random.Range(player.transform.position.x - 7, player.transform.position.x + 7), -22, 22), 4f);
+                powerUp.transform.position = new Vector2(Mathf.Clamp(Random.Range(player.transform.position.x - 5, player.transform.position.x + 5), -22, 22), 4f);
             }
         }
         
