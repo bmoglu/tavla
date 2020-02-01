@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +22,7 @@ public class PlayerController : MonoBehaviour
         _rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         GirlsCountText.text = GirlsCount.ToString();
@@ -123,11 +120,8 @@ public class PlayerController : MonoBehaviour
              }
             
              }
-
-        
-                
-               
 #endif 
+        
     }
 
     private void FixedUpdate()

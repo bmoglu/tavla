@@ -6,7 +6,8 @@ using Random = UnityEngine.Random;
 
 public class girlPatrol : MonoBehaviour
 {
-    public GameObject girlFriendGonulAlinmaBari,tavlanmaBar,phone;
+    public GameObject girlFriendGonulAlinmaBari, tavlanmaBar;
+    public GameObject[] contact;
 
     private bool isGirlGoOut = false;
     private Vector2 targetPos;
@@ -49,8 +50,9 @@ public class girlPatrol : MonoBehaviour
         
         if (tavlanmaSayisi >= 100 && !isGirlGoOut)
         {
+            var rnd=Random.Range(0,3); 
             tavlanmaBar.SetActive(false);
-            phone.SetActive(true);
+            contact[rnd].SetActive(true);
             PlayerController.isTalking = false;
             isGirlGoOut = true;
             gameObject.GetComponent<Collider2D>().enabled = false;
@@ -87,7 +89,7 @@ public class girlPatrol : MonoBehaviour
                 {
                     targetPos = new Vector2(-100, transform.position.y);
                 }
-                transform.position = Vector2.MoveTowards(transform.position,targetPos , 2.5f*speed * Time.deltaTime);  
+                transform.position = Vector2.MoveTowards(transform.position,targetPos , 2.5f*speed * Time.deltaTime);
             }
                 
         }    
