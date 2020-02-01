@@ -144,8 +144,6 @@ public class PlayerController : MonoBehaviour
             _animator.enabled = false;
         }
 
-        GameWin();
-
     }
 
     private void FixedUpdate()
@@ -195,9 +193,5 @@ public class PlayerController : MonoBehaviour
         buket.SetActive(false);
         PowerUp.isTaked = false;
     }
-
-    private void GameWin()
-    {
-        
-    }
+    
 }
