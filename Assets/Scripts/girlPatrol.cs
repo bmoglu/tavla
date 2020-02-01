@@ -26,7 +26,7 @@ public class girlPatrol : MonoBehaviour
     
     void Start()
     {
-        targetPos = new Vector2( Random.Range(-26, 26), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
+        targetPos = new Vector2( Random.Range(-69, 70), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
 
         distance = Math.Abs(transform.position.x - targetPos.x); //Başlangıç pozisyonumuz ile gideceğimiz pozisyon arasındaki farklı alıyoruz.
     }
@@ -75,7 +75,7 @@ public class girlPatrol : MonoBehaviour
         }
         else
         {
-            targetPos = new Vector2( Random.Range(-26, 27), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
+            targetPos = new Vector2( Random.Range(-69, 70), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
         }
 
     }
