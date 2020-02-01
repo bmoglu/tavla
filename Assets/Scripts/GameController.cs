@@ -11,14 +11,14 @@ public class GameController : MonoBehaviour
     
     public GameObject[] powerUps;
 
-    public float lvlTimeSecond = 20f; //Levelin süresi
+    public float lvlTimeSecond = 60; //Levelin süresi
     
     public Text timeText;
 
     private bool isExist = false;
     private float powerUpTiming;
-    private float powerUpMaxSecond = 5f;
-    private float powerUpMinSecond = 2f;
+    private float powerUpMaxSecond = 10f;
+    private float powerUpMinSecond = 5f;
 
     
     // Start is called before the first frame update
@@ -43,24 +43,28 @@ public class GameController : MonoBehaviour
     
     private void createPowerUp()
     {
-        if (!powerUp)
+        if (null == powerUp)
         {
             powerUpTiming -= Time.deltaTime;
         
             if (powerUpTiming <= 0)
             {
                 powerUp = Instantiate(powerUps[Random.Range(0, powerUps.Length)], new Vector2(Random.Range(-22, 23), 4f), Quaternion.identity);
-                
-               
+                PowerUp.isTaked = false;
+                powerUpTiming = Random.Range(powerUpMinSecond, powerUpMaxSecond);
+            }
+        } 
+        else if (!powerUp.gameObject.activeSelf)
+        {
+            powerUpTiming -= Time.deltaTime;
+            if (powerUpTiming <= 0)
+            {
+                powerUpTiming = Random.Range(powerUpMinSecond, powerUpMaxSecond);
+                powerUp = powerUps[Random.Range(0, powerUps.Length)];
+                powerUp.transform.position = new Vector2(Random.Range(-22, 23), 4f);
             }
         }
         
-        if (powerUp)
-        {
-            powerUp = null;
-            
-            powerUpTiming = Random.Range(powerUpMinSecond, powerUpMaxSecond);
-
-        }
+        
     }
 }

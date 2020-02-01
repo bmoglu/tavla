@@ -33,6 +33,15 @@ public class Vision : MonoBehaviour
     {
         if (isTalking)
         {
+            if (PowerUp.isTaked)
+            {
+                tavlanmaHizi = 2.5f;
+            }
+            else
+            {
+                tavlanmaHizi = 0.5f;
+            }
+            
             GetComponentInParent<GirlFriendPatrol>().player.GetComponent<Animator>().SetBool("isTalking", true);
             gfPatrolScript.speed = 0;
             
@@ -44,7 +53,6 @@ public class Vision : MonoBehaviour
                         
                             Heart.SetActive(false);
                             BreakHeart.SetActive(true);
-                            pc.BuketClose();
                         } else
                         {
                             if (tavlanmaSayisi <= 100)
@@ -54,7 +62,7 @@ public class Vision : MonoBehaviour
                             }
                             else
                             {
-                                //Tavlandı
+                               
                             }
                         }
         }
@@ -67,6 +75,7 @@ public class Vision : MonoBehaviour
             gfPatrolScript.speed = 1;
             Heart.SetActive(true);
             BreakHeart.SetActive(false);
+            pc.BuketClose();
         }
     }
 
@@ -89,11 +98,19 @@ public class Vision : MonoBehaviour
             isTalking = false;
             gfPatrolScript.speed = 1;
             GetComponentInParent<GirlFriendPatrol>().player.GetComponent<Animator>().SetBool("isTalking", false);
-
+            StartCoroutine(BarAzalt() );
         }
     }
-    
-    
+
+    IEnumerator BarAzalt()
+    {
+        while (tavlanmaSayisi >= 0) // Bu coroutine, durdurulmadığı sürece sürekli çalışmaya devam eder
+        {
+            tavlanmaSayisi -= 1;
+            SetSizeBar(tavlanmaSayisi / 100);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
     public void SetSizeBar(float sizeNormalized)
     {
         gfPatrolScript.bar.localScale = new Vector3(sizeNormalized, 1f);

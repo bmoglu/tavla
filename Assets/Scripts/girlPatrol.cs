@@ -36,7 +36,7 @@ public class girlPatrol : MonoBehaviour
 
     void Start()
     {
-        targetPos = new Vector2( Random.Range(-69, 70), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
+        targetPos = new Vector2( Random.Range(-22, 23), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
 
         distance = Math.Abs(transform.position.x - targetPos.x); //Başlangıç pozisyonumuz ile gideceğimiz pozisyon arasındaki farklı alıyoruz.
     }
@@ -110,7 +110,7 @@ public class girlPatrol : MonoBehaviour
         {
             if (!isGirlGoOut)
             {
-                targetPos = new Vector2(Random.Range(-69, 70),
+                targetPos = new Vector2(Random.Range(-22, 23),
                     transform.position.y); //Patroll edilecek noktayı seçiyoruz.
             }
             
@@ -169,6 +169,17 @@ public class girlPatrol : MonoBehaviour
             talkToPlayer = false;
             speed = 1;
             player.GetComponent<Animator>().SetBool("isTalking", false);
+            StartCoroutine(BarAzalt() );
+        }
+    }
+
+    IEnumerator BarAzalt()
+    {
+        while (tavlanmaSayisi >= 0) // Bu coroutine, durdurulmadığı sürece sürekli çalışmaya devam eder
+        {
+            tavlanmaSayisi -= 1;
+            SetSizeBar(tavlanmaSayisi / 100);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
