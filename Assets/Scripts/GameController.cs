@@ -21,10 +21,14 @@ public class GameController : MonoBehaviour
     private float powerUpMaxSecond = 10f;
     private float powerUpMinSecond = 5f;
 
-    public GameObject player; 
+    public GameObject player;
+    public AudioClip[] AudioClips;
+    private AudioSource _audio;
+    private void Awake()
+    {
+        _audio=gameObject.GetComponent<AudioSource>();
+    }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         powerUpTiming = Random.Range(powerUpMinSecond, powerUpMaxSecond);
@@ -35,8 +39,6 @@ public class GameController : MonoBehaviour
     {
         if (UIController.isGameStart && !UIController.isGamePasue)
         {
-            
-            
             lvlTimeSecond -= Time.deltaTime;
             timeText.text = "00:" + (int) lvlTimeSecond;
 
@@ -73,7 +75,17 @@ public class GameController : MonoBehaviour
                 powerUp.transform.position = new Vector2(Mathf.Clamp(Random.Range(player.transform.position.x - 5, player.transform.position.x + 5), -22, 22), 4f);
             }
         }
-        
-        
+    }
+
+    private void BadMode()
+    {
+         _audio.clip=AudioClips[1];
+         _audio.Play();
+    }
+
+    private void GoodMode()
+    {
+        _audio.clip=AudioClips[0];
+        _audio.Play();
     }
 }
