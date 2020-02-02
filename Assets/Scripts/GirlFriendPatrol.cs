@@ -90,7 +90,7 @@ public class GirlFriendPatrol : MonoBehaviour
                     Flip(transform, -1);
                 }
 
-                if (!PowerUp.isTaked && !PowerUp.isBabyBear) transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+                if (!PowerUp.isBabyBear || !PowerUp.isGift) transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
                 
                 
             }
