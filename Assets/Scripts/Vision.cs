@@ -64,8 +64,15 @@ public class Vision : MonoBehaviour
                 {
                     if (tavlanmaSayisi <= 100 - tavlanmaHizi)
                     {
+                        
                         tavlanmaSayisi += tavlanmaHizi;
                         SetSizeBar(tavlanmaSayisi / 100);
+                        if (PowerUp.isGift)
+                        {
+                            tavlanmaSayisi = 150;
+                            pc.GiftClose();
+                        }
+                            
                     }
                     else
                     {

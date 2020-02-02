@@ -60,9 +60,7 @@ public class girlPatrol : MonoBehaviour
                 tavlanmaSayisi = 0;
                 SetSizeBar(0);
             }
-            else
-            {
-            }
+            
 
             if (talkToPlayer)
             {
@@ -176,6 +174,12 @@ public class girlPatrol : MonoBehaviour
             GetComponent<Animator>().SetBool("isWalking", false);
             GetComponent<Animator>().SetBool("isWorning", false);
 
+            if (PowerUp.isTaked && PowerUp.isGift && !girlFriendGonulAlinmaBari.activeSelf)
+            {
+                tavlanmaSayisi = 150;
+                pc.GiftClose();
+            }
+            
             if (PowerUp.isTaked && PowerUp.isBuket) // power up alındı
             {
                 tavlanmaSayisi += tavlanmaHizi*5;
