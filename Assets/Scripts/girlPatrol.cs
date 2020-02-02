@@ -162,7 +162,7 @@ public class girlPatrol : MonoBehaviour
     {
         if (tavlanmaSayisi <= 100)
         {
-            if (PowerUp.isTaked) // power up alındı
+            if (PowerUp.isTaked && PowerUp.isBuket) // power up alındı
             {
                 tavlanmaSayisi += tavlanmaHizi*5;
                 

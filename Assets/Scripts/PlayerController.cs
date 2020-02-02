@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private bool isTouch = false;
 
-    public GameObject buket;
+    public GameObject buket,babyBear,gift;
     public Text GirlsCountText;
     private Rigidbody2D _rb;
     public Vector2 moveVelocity;
@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
             _animator.enabled = true;
 
             BuketOpen();
+            BabyBearOpen();
+            GiftOpen();
 
             #region Controller
 
@@ -180,18 +182,58 @@ public class PlayerController : MonoBehaviour
     
     private void BuketOpen()
     {
-        if (PowerUp.isTaked)
+        if (PowerUp.isTaked && PowerUp.isBuket)
         {
             CancelInvoke(nameof(BuketClose));
-            buket.SetActive(true);
+           buket.SetActive(true);
             Invoke(nameof(BuketClose),5);
         }
     }
 
     public void BuketClose()
     {
-        buket.SetActive(false);
         PowerUp.isTaked = false;
+        PowerUp.isBuket = false;
+        buket.SetActive(true);
+    }
+    
+    private void BabyBearOpen()
+    {
+        if (PowerUp.isTaked && PowerUp.isBabyBear)
+        {
+            CancelInvoke(nameof(BabyBearClose));
+            babyBear.SetActive(true);
+            
+            Invoke(nameof(BabyBearClose),5);
+        }
+    }
+    
+    public void BabyBearClose()
+    {
+   
+        PowerUp.isTaked = false;
+        PowerUp.isBabyBear = false;
+        
+        babyBear.SetActive(true);
+    }
+    
+    private void GiftOpen()
+    {
+        if (PowerUp.isTaked && PowerUp.isBabyBear)
+        {
+            CancelInvoke(nameof(GiftClose));
+            gift.SetActive(true);
+            
+            Invoke(nameof(GiftClose),5);
+        }
+    }
+    
+    public void GiftClose()
+    {
+   
+        PowerUp.isTaked = false;
+        PowerUp.isGift = false;
+        gift.SetActive(true);
     }
     
 }
