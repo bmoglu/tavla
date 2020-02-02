@@ -22,7 +22,7 @@ public class GirlFriendPatrol : MonoBehaviour
     
     void Start()
     {
-        _animator = GetComponent<Animator>();
+        _animator = gameObject.GetComponent<Animator>();
         
         targetPos = new Vector2( Random.Range(player.transform.position.x + 3, player.transform.position.x - 3), transform.position.y); //Patroll edilecek noktayı seçiyoruz.
 
@@ -34,7 +34,16 @@ public class GirlFriendPatrol : MonoBehaviour
 
         if (UIController.isGameStart && !UIController.isGamePasue)
         {
-            _animator.enabled = true;
+            if (PowerUp.isTaked && PowerUp.isBabyBear)
+            {
+                _animator.enabled = false;
+            }
+            else
+            {
+                player.GetComponent<PlayerController>().BabyBearClose();
+                _animator.enabled = true;
+            }
+            
             if (_animator.GetBool("isAnger"))
             {
                 transform.position = new Vector3(transform.position.x, -2f, transform.position.z);
@@ -77,10 +86,13 @@ public class GirlFriendPatrol : MonoBehaviour
                     Flip(transform, -1);
                 }
 
-                transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+                if (!PowerUp.isTaked && !PowerUp.isBabyBear) transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+                
+                
             }
             else
             {
+                
                 targetPos = new Vector2(Random.Range(player.transform.position.x + 3, player.transform.position.x - 3),
                     transform.position.y); //Patroll edilecek noktayı seçiyoruz.
             }

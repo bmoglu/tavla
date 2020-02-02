@@ -16,6 +16,8 @@ public class UIController : MonoBehaviour
 
     public GameObject[] UIObjects;
 
+    public PlayerController pc;
+
     void Start()
     {
 
@@ -35,11 +37,7 @@ public class UIController : MonoBehaviour
             isGamePasue = false;
             isGameWin = false;
         }
-        else
-        {
-
-
-        }
+       
 
         LvlWin();
 
@@ -47,6 +45,11 @@ public class UIController : MonoBehaviour
 
     public void OnClickStart()
     {
+        pc.BuketClose();
+        pc.BabyBearClose(); 
+        pc.GiftClose(); 
+        
+        
         UIObjects[0].SetActive(false);
         UIObjects[1].SetActive(true);
         

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject GF;
     private bool isTouch = false;
 
     public GameObject buket,babyBear,gift;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public static int GirlsCount = 0;
     public Animator _animator;
 
+    
     private int lvl1 = 5;
     private int lvl2;
     private int lvl3;
@@ -202,6 +204,7 @@ public class PlayerController : MonoBehaviour
         if (PowerUp.isTaked && PowerUp.isBabyBear)
         {
             CancelInvoke(nameof(BabyBearClose));
+            
             babyBear.SetActive(true);
             
             Invoke(nameof(BabyBearClose),5);
@@ -214,7 +217,7 @@ public class PlayerController : MonoBehaviour
         PowerUp.isTaked = false;
         PowerUp.isBabyBear = false;
         
-        babyBear.SetActive(false);
+       babyBear.SetActive(false);
     }
     
     private void GiftOpen()
