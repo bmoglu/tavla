@@ -65,7 +65,7 @@ public class girlPatrol : MonoBehaviour
 
             if (tavlanmaSayisi >= 100 && !isGirlGoOut)
             {
-                var rnd = Random.Range(0, 3);
+                var rnd = Random.Range(0, 4);
                 tavlanmaBar.SetActive(false);
                 contact[rnd].SetActive(true);
                 PlayerController.isTalking = false;
@@ -74,8 +74,8 @@ public class girlPatrol : MonoBehaviour
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 PlayerController.GirlsCount++;
 
-                
-                pc.BuketClose();
+                if(PowerUp.isBuket)
+                    pc.BuketClose();
                 
             }
         }

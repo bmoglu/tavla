@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
         if (PowerUp.isTaked && PowerUp.isBuket)
         {
             CancelInvoke(nameof(BuketClose));
-           buket.SetActive(true);
+            buket.SetActive(true);
             Invoke(nameof(BuketClose),5);
         }
     }
@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
     {
         PowerUp.isTaked = false;
         PowerUp.isBuket = false;
-        buket.SetActive(true);
+        buket.SetActive(false);
     }
     
     private void BabyBearOpen()
@@ -214,12 +214,12 @@ public class PlayerController : MonoBehaviour
         PowerUp.isTaked = false;
         PowerUp.isBabyBear = false;
         
-        babyBear.SetActive(true);
+        babyBear.SetActive(false);
     }
     
     private void GiftOpen()
     {
-        if (PowerUp.isTaked && PowerUp.isBabyBear)
+        if (PowerUp.isTaked && PowerUp.isGift)
         {
             CancelInvoke(nameof(GiftClose));
             gift.SetActive(true);
@@ -233,7 +233,8 @@ public class PlayerController : MonoBehaviour
    
         PowerUp.isTaked = false;
         PowerUp.isGift = false;
-        gift.SetActive(true);
+        
+        gift.SetActive(false);
     }
     
 }
