@@ -9,7 +9,7 @@ public class Vision : MonoBehaviour
 
     private float tavlanmaSayisi = 0; // 100 kalbini onarmış olacağız.
 
-    private float tavlanmaHizi = .5f; //Karaktere göre tavlanma kolaylığı değişecek
+    private float tavlanmaHizi = 2f; //Karaktere göre tavlanma kolaylığı değişecek
 
     
     private GirlFriendPatrol gfPatrolScript;

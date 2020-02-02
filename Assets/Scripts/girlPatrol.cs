@@ -33,7 +33,7 @@ public class girlPatrol : MonoBehaviour
 
     private float tavlanmaSayisi = 0; // 100 Olunca tavlanıp numarasını verecek
 
-    private float tavlanmaHizi = .5f; //Karaktere göre tavlanma kolaylığı değişecek
+    private float tavlanmaHizi = 1f; //Karaktere göre tavlanma kolaylığı değişecek
 
     private bool talkToPlayer = false;
 
@@ -276,8 +276,11 @@ public class girlPatrol : MonoBehaviour
         {
             if (PlayerController.GirlsCount == 5)
             {
-                UIController.isGameWin = true;
-                PlayerController.GirlsCount = 0;
+                //UIController.isGameWin = true;
+                //PlayerController.GirlsCount = 0;
+
+                SceneManager.LoadScene(1);
+
             }
         }
         else if (temp == 1)
