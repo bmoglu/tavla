@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Buket
   - BabyBear
+  - Gift
   layers:
   - Default
   - TransparentFX
