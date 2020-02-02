@@ -217,20 +217,25 @@ public class girlPatrol : MonoBehaviour
             if (PlayerController.GirlsCount == 5)
             {
                 UIController.isGameWin = true;
+                PlayerController.GirlsCount = 0;
             }
         }
         else if (temp == 1)
         {
-            if (PlayerController.GirlsCount == 100)
+            if (PlayerController.GirlsCount == 5)
             {
                 UIController.isGameWin = true;
+                PlayerController.GirlsCount = 0;
+
             } 
         }
         else
         {
-            if (PlayerController.GirlsCount == 50)
+            if (PlayerController.GirlsCount == 5)
             {
                 UIController.isGameWin = true;
+                PlayerController.GirlsCount = 0;
+
             }
         }
     }
