@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
             #region Controller
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE
             float horizontalInput = Input.GetAxis("Horizontal");
 
             if (horizontalInput == 0)
