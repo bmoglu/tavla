@@ -70,7 +70,7 @@ public class girlPatrol : MonoBehaviour
 
             if (tavlanmaSayisi >= 100 && !isGirlGoOut)
             {
-                var rnd = Random.Range(0, 4);
+                var rnd = Random.Range(0, 3);
                 tavlanmaBar.SetActive(false);
                 contact[rnd].SetActive(true);
                 PlayerController.isTalking = false;
