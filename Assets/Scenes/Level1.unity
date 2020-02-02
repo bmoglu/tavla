@@ -1772,6 +1772,21 @@ PrefabInstance:
       propertyPath: gift
       value: 
       objectReference: {fileID: 858812867}
+    - target: {fileID: 4002868614935252582, guid: 2103c16dd0ef5f9409d6a53fcd0d4f2d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948872733882683418, guid: 2103c16dd0ef5f9409d6a53fcd0d4f2d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712593803407360972, guid: 2103c16dd0ef5f9409d6a53fcd0d4f2d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2103c16dd0ef5f9409d6a53fcd0d4f2d, type: 3}
 --- !u!1 &858812867 stripped

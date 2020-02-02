@@ -37,7 +37,7 @@ public class Vision : MonoBehaviour
 
             if (isTalking)
             {
-                if (PowerUp.isTaked)
+                if (PowerUp.isTaked && PowerUp.isBuket)
                 {
                     tavlanmaHizi = 2.5f;
                 }
