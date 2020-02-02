@@ -52,16 +52,23 @@ public class girlPatrol : MonoBehaviour
             _anim.enabled = true;
             if (girlFriendGonulAlinmaBari.activeSelf) //EĞER KIZ ARKADAŞIN KALBİ KIRIKSA TAVLANAMAZ
             {
+                GetComponent<Animator>().SetBool("isWorning", true);
+                GetComponent<Animator>().SetBool("isWalking", false);
+                GetComponent<Animator>().SetBool("isTalking", false);
                 talkToPlayer = false;
-                speed = 1;
+                speed = 2;
                 tavlanmaSayisi = 0;
                 SetSizeBar(0);
+            }
+            else
+            {
             }
 
             if (talkToPlayer)
             {
                 TALK();
             }
+
 
             if (tavlanmaSayisi >= 100 && !isGirlGoOut)
             {
@@ -154,7 +161,6 @@ public class girlPatrol : MonoBehaviour
             
             talkToPlayer = true;
             speed = 0;
-            player.GetComponent<Animator>().SetBool("isTalking", true);
         }
     }
 
@@ -162,6 +168,14 @@ public class girlPatrol : MonoBehaviour
     {
         if (tavlanmaSayisi <= 100)
         {
+            GetComponent<Animator>().SetBool("isTalking",true);
+            
+            pc.GetComponent<Animator>().SetBool("isTalking", true);
+            pc.GetComponent<Animator>().SetBool("isMoving", false);
+            
+            GetComponent<Animator>().SetBool("isWalking", false);
+            GetComponent<Animator>().SetBool("isWorning", false);
+
             if (PowerUp.isTaked && PowerUp.isBuket) // power up alındı
             {
                 tavlanmaSayisi += tavlanmaHizi*5;
@@ -188,7 +202,9 @@ public class girlPatrol : MonoBehaviour
         {
             talkToPlayer = false;
             speed = 1;
-            player.GetComponent<Animator>().SetBool("isTalking", false);
+            GetComponent<Animator>().SetBool("isTalking", false);
+            GetComponent<Animator>().SetBool("isWalking", true);
+            
             StartCoroutine(BarAzalt() );
         }
     }
