@@ -31,9 +31,18 @@ public class GirlFriendPatrol : MonoBehaviour
 
     private void Update()
     {
+
         if (UIController.isGameStart && !UIController.isGamePasue)
         {
             _animator.enabled = true;
+            if (_animator.GetBool("isAnger"))
+            {
+                transform.position = new Vector3(transform.position.x, -2f, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, -3.18f, transform.position.z); 
+            }
             
             if (speed == 1)
             {

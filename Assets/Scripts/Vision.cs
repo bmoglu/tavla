@@ -57,10 +57,12 @@ public class Vision : MonoBehaviour
 
                     Heart.SetActive(false);
                     BreakHeart.SetActive(true);
+                    GetComponentInParent<Animator>().GetComponent<Animator>().SetBool("isAnger", true);
+
                 }
                 else
                 {
-                    if (tavlanmaSayisi <= 100)
+                    if (tavlanmaSayisi <= 100 - tavlanmaHizi)
                     {
                         tavlanmaSayisi += tavlanmaHizi;
                         SetSizeBar(tavlanmaSayisi / 100);
@@ -81,6 +83,8 @@ public class Vision : MonoBehaviour
                 Heart.SetActive(true);
                 BreakHeart.SetActive(false);
                 pc.BuketClose();
+                GetComponentInParent<Animator>().GetComponent<Animator>().SetBool("isAnger", false);
+
             }
         }
     }
