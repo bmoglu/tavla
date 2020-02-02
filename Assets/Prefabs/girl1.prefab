@@ -928,6 +928,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62815151eaa3eb340b96cc5514fdc23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  badSound: {fileID: 8300000, guid: 850c817575845f84cb0c069881955a6b, type: 3}
+  goodSound: {fileID: 8300000, guid: 0b7806faa2d3cdc4792397e4e037fe0c, type: 3}
+  gameCameraAudioSource: {fileID: 0}
+  backGroundObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  goodMode:
+  - {fileID: 21300000, guid: c6b336a3babeb2e4d875005c0de6d94b, type: 3}
+  - {fileID: 21300000, guid: a42c9604c875ebc42afd4e683edb63e3, type: 3}
+  - {fileID: 21300000, guid: ad247edc1bca3d0449de1ef2bcc4be98, type: 3}
+  - {fileID: 21300000, guid: 302eed5664e7974448e60fd804691d59, type: 3}
+  - {fileID: 21300000, guid: 85b769cd5ced77a4698731c605948b5d, type: 3}
+  - {fileID: 21300000, guid: b026406142778e343955c18f41797125, type: 3}
+  badMode:
+  - {fileID: 21300000, guid: cd4c9c8c2cbd69c41b7e83e5df552b17, type: 3}
+  - {fileID: 21300000, guid: eb3e4c9147d4dd14f965040e2a61219c, type: 3}
+  - {fileID: 21300000, guid: c73ff0bfd0271454298aa401c9fdbbe6, type: 3}
+  - {fileID: 21300000, guid: ab33b0a2a8c93db46948307701c0b2f1, type: 3}
+  - {fileID: 21300000, guid: c5350518065003d40932181bc25d8564, type: 3}
+  - {fileID: 21300000, guid: b95eca9a6792e9144a24514ed28ecd2b, type: 3}
   girlFriendGonulAlinmaBari: {fileID: 0}
   tavlanmaBar: {fileID: 379870737}
   contact:

@@ -8,6 +8,17 @@ using Random = UnityEngine.Random;
 
 public class girlPatrol : MonoBehaviour
 {
+    public AudioClip badSound;
+    public AudioClip goodSound;
+    public AudioSource gameCameraAudioSource;
+
+    public GameObject[] backGroundObjects;
+    public Sprite[] goodMode;
+    public Sprite[] badMode;
+    
+    
+    private bool isBackgroundMode = true; //True good false bad mode
+    
     public GameObject girlFriendGonulAlinmaBari, tavlanmaBar;
     public GameObject[] contact;
 
@@ -52,6 +63,19 @@ public class girlPatrol : MonoBehaviour
             _anim.enabled = true;
             if (girlFriendGonulAlinmaBari.activeSelf) //EĞER KIZ ARKADAŞIN KALBİ KIRIKSA TAVLANAMAZ
             {
+                if (isBackgroundMode)
+                {
+                    isBackgroundMode =  false;
+
+                    for (int i=0; i < backGroundObjects.Length; i++)
+                    {
+                        backGroundObjects[i].GetComponent<SpriteRenderer>().sprite = badMode[i];
+                    }
+
+                    gameCameraAudioSource.clip = badSound;
+                    gameCameraAudioSource.Play();
+                }
+                
                 GetComponent<Animator>().SetBool("isWorning", true);
                 GetComponent<Animator>().SetBool("isWalking", false);
                 GetComponent<Animator>().SetBool("isTalking", false);
@@ -59,6 +83,22 @@ public class girlPatrol : MonoBehaviour
                 speed = 2;
                 tavlanmaSayisi = 0;
                 SetSizeBar(0);
+            }
+            else
+            {
+                if (!isBackgroundMode)
+                {
+                    isBackgroundMode =  true;
+                    
+                    for (int i=0; i < backGroundObjects.Length; i++)
+                    {
+                        backGroundObjects[i].GetComponent<SpriteRenderer>().sprite = goodMode[i];
+                    }                    
+                    gameCameraAudioSource.clip = goodSound;
+                    gameCameraAudioSource.Play();
+
+
+                }
             }
             
 
