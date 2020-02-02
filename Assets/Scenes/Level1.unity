@@ -572,6 +572,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
+      propertyPath: gameCameraAudioSource
+      value: 
+      objectReference: {fileID: 519420035}
+    - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
       propertyPath: backGroundObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1774047512}
@@ -603,10 +607,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1756480399}
-    - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
-      propertyPath: gameCameraAudioSource
-      value: 
-      objectReference: {fileID: 519420035}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
 --- !u!1001 &272501402
@@ -677,6 +677,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
+      propertyPath: gameCameraAudioSource
+      value: 
+      objectReference: {fileID: 519420035}
+    - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
       propertyPath: backGroundObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1774047512}
@@ -708,10 +712,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1756480399}
-    - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
-      propertyPath: gameCameraAudioSource
-      value: 
-      objectReference: {fileID: 519420035}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
 --- !u!1 &393045558
@@ -859,6 +859,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
+      propertyPath: gameCameraAudioSource
+      value: 
+      objectReference: {fileID: 519420035}
+    - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
       propertyPath: backGroundObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1774047512}
@@ -890,10 +894,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1756480399}
-    - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
-      propertyPath: gameCameraAudioSource
-      value: 
-      objectReference: {fileID: 519420035}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
 --- !u!1 &438005414
@@ -1646,11 +1646,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1219711776, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.27
+      objectReference: {fileID: 0}
     - target: {fileID: 1043476270, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b404d32245f1745438e55b0728a97d70,
         type: 3}
+    - target: {fileID: 1043476270, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043476270, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043476270, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1992107229, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
       propertyPath: player
       value: 
@@ -1661,6 +1677,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ad7c91135f8877f42a340bf237f4504b,
         type: 3}
+    - target: {fileID: 4562278874859773404, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4562278874859773404, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4562278874859773404, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1647912617, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -1680,6 +1711,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 1647912618, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647912618, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647912618, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647912618, guid: 5ea6eecd9bf3daf4e9e28eb76a0f657f, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1898,6 +1941,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
+      propertyPath: gameCameraAudioSource
+      value: 
+      objectReference: {fileID: 519420035}
+    - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
       propertyPath: backGroundObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1774047512}
@@ -1929,10 +1976,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1756480399}
-    - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
-      propertyPath: gameCameraAudioSource
-      value: 
-      objectReference: {fileID: 519420035}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
 --- !u!1 &986075706
@@ -2910,6 +2953,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
+      propertyPath: gameCameraAudioSource
+      value: 
+      objectReference: {fileID: 519420035}
+    - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
       propertyPath: backGroundObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1774047512}
@@ -2941,10 +2988,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1756480399}
-    - target: {fileID: 1377631857, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
-      propertyPath: gameCameraAudioSource
-      value: 
-      objectReference: {fileID: 519420035}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a4b2a9ac2b47dd4f9f81df17b9dd2dc, type: 3}
 --- !u!1 &1437767208
