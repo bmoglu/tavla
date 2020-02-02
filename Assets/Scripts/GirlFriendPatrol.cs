@@ -40,7 +40,11 @@ public class GirlFriendPatrol : MonoBehaviour
             }
             else
             {
-                player.GetComponent<PlayerController>().BabyBearClose();
+                if (PowerUp.isBabyBear)
+                {
+                    player.GetComponent<PlayerController>().BabyBearClose();
+                }
+                
                 _animator.enabled = true;
             }
             
